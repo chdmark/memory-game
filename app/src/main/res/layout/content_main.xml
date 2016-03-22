@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Hi Score: 999"
-        android:id="@+id/textView2"
+        android:id="@+id/textHiScore"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:textSize="50sp" />
@@ -47,7 +47,7 @@
         android:text="Play"
         android:id="@+id/button"
         android:layout_marginTop="65dp"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/textHiScore"
         android:layout_centerHorizontal="true"
         android:textSize="50sp" />
 </RelativeLayout>
