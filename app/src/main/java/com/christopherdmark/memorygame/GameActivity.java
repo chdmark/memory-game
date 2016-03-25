@@ -7,12 +7,14 @@ import android.media.SoundPool;
 import android.os.Bundle;
 
 import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import java.io.IOException;
+import java.util.Random;
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
     private SoundPool soundPool;
@@ -96,10 +98,55 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         button3.setOnClickListener(this);
         button4.setOnClickListener(this);
         buttonReplay.setOnClickListener(this);
+
+        //Code which will define our thread
+
+        myHandler = new Handler(){
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                    if (playSequence){
+                        //All the thread action will go here
+                    }
+                myHandler.sendEmptyMessageDelayed(0, 900);
+            }
+        };
     }
 
     @Override
     public void onClick(View v) {
+
+    }
+
+    public void createSequence(){
+        //For choosing a random button
+        Random randInt = new Random();
+        int ourRandom;
+        for(int i = 0; i < difficultyLevel; i++){
+            ourRandom = randInt.nextInt(4);
+            ourRandom ++;
+            sequenceToCopy[i] = ourRandom;
+
+        }
+    }
+
+    public void playASequence(){
+        createSequence();
+        isResponding = false;
+        elementToPlay = 0;
+        playerResponses = 0;
+        textWatchGo.setText("WATCH!");
+        playSequence = true;
+    }
+
+    public void sequenceFinished(){
+        playSequence = false;
+        //make sure all the buttons are made visible
+        button1.setVisibility(View.VISIBLE);
+        button2.setVisibility(View.VISIBLE);
+        button3.setVisibility(View.VISIBLE);
+        button4.setVisibility(View.VISIBLE);
+        textWatchGo.setText("GO!");
+        isResponding = true; 
 
     }
 }
