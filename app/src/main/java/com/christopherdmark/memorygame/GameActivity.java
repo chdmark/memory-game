@@ -89,6 +89,13 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         button3 = (Button)findViewById(R.id.button3);
         button4 = (Button)findViewById(R.id.button4);
         buttonReplay = (Button)findViewById(R.id.buttonReplay);
+
+        //Now set all the buttons to listen for clicks
+        button1.setOnClickListener(this);
+        button2.setOnClickListener(this);
+        button3.setOnClickListener(this);
+        button4.setOnClickListener(this);
+        buttonReplay.setOnClickListener(this);
     }
 
     @Override
