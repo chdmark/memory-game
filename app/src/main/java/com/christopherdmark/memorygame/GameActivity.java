@@ -106,10 +106,41 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 super.handleMessage(msg);
                     if (playSequence){
                         //All the thread action will go here
+                        //make sure all the buttons are made visible
+
+                        button1.setVisibility(View.VISIBLE);
+                        button2.setVisibility(View.VISIBLE);
+                        button3.setVisibility(View.VISIBLE);
+                        button4.setVisibility(View.VISIBLE);
+
+                        switch( sequenceToCopy[elementToPlay]){
+                            case 1: button1.setVisibility(View.INVISIBLE);
+                                //play a sound
+                                soundPool.play(sample1, 1, 1, 0, 0, 1);
+                                break;
+                            case 2: button2.setVisibility(View.INVISIBLE);
+                                //play a sound
+                                soundPool.play(sample2, 1, 1, 0, 0, 1);
+                                break;
+                            case 3: button3.setVisibility(View.INVISIBLE);
+                                //play a sound
+                                soundPool.play(sample3, 1, 1, 0, 0, 1);
+                                break;
+                            case 4: button4.setVisibility(View.INVISIBLE);
+                                //play a sound
+                                soundPool.play(sample4, 1, 1, 0, 0, 1);
+                                break;
+                        }
+
+                        elementToPlay++;
+                        if(elementToPlay == difficultyLevel){
+                            sequenceFinished();
+                        }
                     }
                 myHandler.sendEmptyMessageDelayed(0, 900);
             }
         };
+        playASequence();
     }
 
     @Override
@@ -146,7 +177,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         button3.setVisibility(View.VISIBLE);
         button4.setVisibility(View.VISIBLE);
         textWatchGo.setText("GO!");
-        isResponding = true; 
+        isResponding = true;
 
     }
 }
