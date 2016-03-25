@@ -1,5 +1,9 @@
 package com.christopherdmark.memorygame;
 
+import android.content.res.AssetFileDescriptor;
+import android.content.res.AssetManager;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
 
 import android.os.Handler;
@@ -8,8 +12,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class GameActivity extends AppCompatActivity implements View.OnClickListener {
+import java.io.IOException;
 
+public class GameActivity extends AppCompatActivity implements View.OnClickListener {
+    private SoundPool soundPool;
     int sample1 = -1;
     int sample2 = -1;
     int sample3 = -1;
@@ -38,7 +44,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     int elementToPlay = 0;
     //For checking the players answer
     int playerResponses;
-    int PlayerScore;
+    int playerScore;
     boolean isResponding;
 
     @Override
@@ -46,6 +52,43 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
+        try{
+            AssetManager assetManager = getAssets();
+            AssetFileDescriptor descriptor;
+
+            descriptor = assetManager.openFd("sample1.ogg");
+            sample1 = soundPool.load(descriptor, 0);
+
+            descriptor = assetManager.openFd("sample2.ogg");
+            sample2 = soundPool.load(descriptor, 0);
+
+            descriptor = assetManager.openFd("sample3.ogg");
+            sample3 = soundPool.load(descriptor, 0);
+
+            descriptor = assetManager.openFd("sample4.ogg");
+            sample4 = soundPool.load(descriptor, 0);
+        }catch(IOException e){
+
+        }
+
+        //reference all the elements of our UI
+        //First the TextViews
+
+        textScore = (TextView)findViewById(R.id.textScore);
+        textScore.setText("Score: " + playerScore);
+        textDifficulty = (TextView)findViewById(R.id.textDifficulty);
+
+        textDifficulty.setText("Level: " + difficultyLevel);
+        textWatchGo = (TextView)findViewById(R.id.textWatchGo);
+
+
+        //Now the buttons
+        button1 = (Button)findViewById(R.id.button);
+        button2 = (Button)findViewById(R.id.button2);
+        button3 = (Button)findViewById(R.id.button3);
+        button4 = (Button)findViewById(R.id.button4);
+        buttonReplay = (Button)findViewById(R.id.buttonReplay);
     }
 
     @Override
