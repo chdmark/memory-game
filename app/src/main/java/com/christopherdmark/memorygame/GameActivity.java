@@ -149,10 +149,15 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if(!playSequence){
-            switch (view.getId()) {
+            switch (v.getId()) {
                 case R.id.button:
                     //play a sound
                     soundPool.play(sample1, 1, 1, 0, 0, 1);
+                    checkElement(1);
+                    break;
+                case R.id.button2:
+                    //play a sound
+                    soundPool.play(sample2, 1, 1, 0, 0, 1);
                     checkElement(1);
                     break;
             }
