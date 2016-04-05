@@ -138,17 +138,9 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                             sequenceFinished();
                         }
                     }
-                if(!playSequence){
-                    switch (view.getId()) {
-                        case R.id.button:
-                            //play a sound
-                            soundPool.play(sample1, 1, 1, 0, 0, 1);
-                            checkElement(1);
-                            break;
-                    }
-                }
 
                 myHandler.sendEmptyMessageDelayed(0, 900);
+
             }
         };
         playASequence();
@@ -156,7 +148,15 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-
+        if(!playSequence){
+            switch (view.getId()) {
+                case R.id.button:
+                    //play a sound
+                    soundPool.play(sample1, 1, 1, 0, 0, 1);
+                    checkElement(1);
+                    break;
+            }
+        }
     }
 
     public void createSequence(){
