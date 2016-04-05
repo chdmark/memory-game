@@ -160,6 +160,16 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                     soundPool.play(sample2, 1, 1, 0, 0, 1);
                     checkElement(1);
                     break;
+                case R.id.button3:
+                    //play a sound
+                    soundPool.play(sample3, 1, 1, 0, 0, 1);
+                    checkElement(1);
+                    break;
+                case R.id.button4:
+                    //play a sound
+                    soundPool.play(sample4, 1, 1, 0, 0, 1);
+                    checkElement(1);
+                    break;
             }
         }
     }
