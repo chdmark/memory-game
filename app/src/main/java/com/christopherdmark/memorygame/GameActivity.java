@@ -28,6 +28,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     TextView textDifficulty;
     TextView textWatchGo;
 
+    
+
     Button button1;
     Button button2;
     Button button3;
