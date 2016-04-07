@@ -28,6 +28,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     TextView textDifficulty;
     TextView textWatchGo;
 
+    
+
     Button button1;
     Button button2;
     Button button3;
@@ -132,12 +134,15 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                                 break;
                         }
 
+
                         elementToPlay++;
                         if(elementToPlay == difficultyLevel){
                             sequenceFinished();
                         }
                     }
+
                 myHandler.sendEmptyMessageDelayed(0, 900);
+
             }
         };
         playASequence();
@@ -145,7 +150,30 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-
+        if(!playSequence){
+            switch (v.getId()) {
+                case R.id.button:
+                    //play a sound
+                    soundPool.play(sample1, 1, 1, 0, 0, 1);
+                    checkElement(1);
+                    break;
+                case R.id.button2:
+                    //play a sound
+                    soundPool.play(sample2, 1, 1, 0, 0, 1);
+                    checkElement(2);
+                    break;
+                case R.id.button3:
+                    //play a sound
+                    soundPool.play(sample3, 1, 1, 0, 0, 1);
+                    checkElement(3);
+                    break;
+                case R.id.button4:
+                    //play a sound
+                    soundPool.play(sample4, 1, 1, 0, 0, 1);
+                    checkElement(4);
+                    break;
+            }
+        }
     }
 
     public void createSequence(){
